@@ -3,30 +3,36 @@ defmodule Quickbooks.Mixfile do
 
   def project do
     [app: :quickbooks,
-     version: "0.1.0",
+     version: "0.0.1",
      elixir: "~> 1.3",
+     description: description(),
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+     package: package ]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
     [applications: [:logger],
      mod: {Quickbooks, []}]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      maintainers: ["AlexVKO"],
+      licenses: ["Apache 2.0"],
+      links: %{"GitHub" => "https://github.com/alexvko/quickbooks-elixir"}
+    ]
+  end
+
+  defp description do
+    """
+    Quickbooks Online REST API V3 for Elixir
+    IN PROGRESS(Not for production yet)
+    """
+  end
+
   defp deps do
     []
   end

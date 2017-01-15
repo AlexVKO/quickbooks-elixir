@@ -1,11 +1,9 @@
-# Quickbooks
+# Quickbooks 
+Quickbooks Online REST API V3 for Elixir
 
-**TODO: Add description**
+IN PROGRESS(Not for production yet)
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-
   1. Add `quickbooks` to your list of dependencies in `mix.exs`:
 
     ```elixir

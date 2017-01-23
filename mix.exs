@@ -9,11 +9,11 @@ defmodule Quickbooks.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps(),
-     package: package ]
+     package: package() ]
   end
 
   def application do
-    [applications: [:logger],
+    [applications: [:logger, :httpoison],
      mod: {Quickbooks, []}]
   end
 
@@ -34,6 +34,9 @@ defmodule Quickbooks.Mixfile do
   end
 
   defp deps do
-    [{:ex_doc, "~> 0.14", only: :dev}]
+    [{:ex_doc, "~> 0.14", only: :dev},
+     {:httpoison, "~> 0.10.0"},
+     {:poison, "~> 2.0"},
+     {:oauther, "~> 1.1"}]
   end
 end

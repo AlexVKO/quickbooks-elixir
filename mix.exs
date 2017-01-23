@@ -3,7 +3,7 @@ defmodule Quickbooks.Mixfile do
 
   def project do
     [app: :quickbooks,
-     version: "0.0.1",
+     version: "0.1.0",
      elixir: "~> 1.3",
      description: description(),
      build_embedded: Mix.env == :prod,

@@ -1,12 +1,23 @@
 defmodule Quickbooks.OAuthQBO do
+  @moduledoc """
+    OAuth wrapper for Quickbooks
+  """
   import Quickbooks.Request.Base
 
   @request_token_url "https://oauth.intuit.com/oauth/v1/get_request_token"
   @access_token_path "https://oauth.intuit.com/oauth/v1/get_access_token"
   @user_authorization_url	"https://appcenter.intuit.com/Connect/Begin"
 
+  @doc """
+    Returns {:status, :response, :redirect_url}
+
+    status = :ok / :error
+    response = %{"oauth_callback_confirmed" => ..., "oauth_token" => ..., "oauth_token_secret" => ...}
+    rediret_url = url for user authorization screen.
+  }
+  """
   def get_request_token() do
-    %Quickbooks.Request{verb: "post"}
+    %Quickbooks.Request{}
     |> add_url("url", @request_token_url)
     |> add_verb("post")
     |> oauth_sign_request(nil,nil,{"oauth_callback", Quickbooks.oauth_callback_url})
@@ -20,6 +31,10 @@ defmodule Quickbooks.OAuthQBO do
     end
   end
 
+  @doc """
+    Adds authorization on headers of each request
+    returns `Quickbooks.Request` struct
+  """
   def oauth_sign_request(request, token \\ nil, token_secret \\ nil, additional_headers \\ nil) do
     %Quickbooks.Request{ headers: headers, url: url, verb: verb} = request
 
@@ -39,6 +54,9 @@ defmodule Quickbooks.OAuthQBO do
       %Quickbooks.Request{ request | headers: [authorize_headers] ++ headers }
     end
 
+  @doc """
+    Build authorization url based on Quickbooks url and user token
+  """
   defp user_authorization_url(token) do
     @user_authorization_url <> "?oauth_token=" <> token
   end

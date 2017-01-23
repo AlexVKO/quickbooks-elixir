@@ -16,15 +16,10 @@ defmodule Quickbooks.AccountingAPI do
     returns status and decoded body
   """
   def query(%{token: token, token_secret: token_secret, realm_id: realm_id}, query) do
-    IO.puts "QUERY PARAMS"
-    IO.inspect token
-    IO.inspect token_secret
-    IO.inspect realm_id
-
     %Quickbooks.Request{}
     |> build_headers
     |> build_qbo_url(base_url() , realm_id, "query")
-    |> add_query_params("query=SELECT+*+FROM+Customer+STARTPOSITION+1+MAXRESULTS+20")
+    |> add_query_params(query)
     |> add_verb("get")
     |> Quickbooks.OAuthQBO.oauth_sign_request(token, token_secret)
     |> execute

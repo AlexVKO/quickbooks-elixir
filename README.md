@@ -1,4 +1,5 @@
 # Quickbooks
+[![Hex.pm](http://img.shields.io/hexpm/v/quickbooks.svg)](https://hex.pm/packages/quickbooks)
 IN PROGRESS(Not for production yet)
 
 Integration with Quickbooks Online via the Intuit Data Services v3 REST API

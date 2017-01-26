@@ -4,7 +4,7 @@ defmodule Quickbooks.AccountingAPI.CustomerQBO do
     Accounting api wrapper for Customer
   """
 
-  def query(credentials, query \\ "SELECT+*+FROM+Customer+STARTPOSITION+1+MAXRESULTS+20") do
+  def query(credentials, query \\ "query=SELECT+*+FROM+Customer+STARTPOSITION+1+MAXRESULTS+20") do
     Quickbooks.AccountingAPI.query(credentials, query)
   end
 

@@ -13,7 +13,7 @@ defmodule Quickbooks.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :httpoison],
+    [applications: [:logger, :httpoison, :apex],
      mod: {Quickbooks, []}]
   end
 
@@ -35,6 +35,7 @@ defmodule Quickbooks.Mixfile do
 
   defp deps do
     [{:ex_doc, "~> 0.14", only: :dev},
+     {:apex, "~>0.7.0"},
      {:httpoison, "~> 0.10.0"},
      {:poison, "~> 2.0"},
      {:oauther, "~> 1.1"}]

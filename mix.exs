@@ -3,7 +3,7 @@ defmodule Quickbooks.Mixfile do
 
   def project do
     [app: :quickbooks,
-     version: "0.1.01",
+     version: "0.1.2",
      elixir: "~> 1.3",
      description: description(),
      build_embedded: Mix.env == :prod,
@@ -34,10 +34,12 @@ defmodule Quickbooks.Mixfile do
   end
 
   defp deps do
-    [{:ex_doc, "~> 0.14", only: :dev},
-     {:apex, "~>0.7.0"},
-     {:httpoison, "~> 0.10.0"},
-     {:poison, "~> 2.0"},
-     {:oauther, "~> 1.1"}]
+    [
+      {:ex_doc, "~> 0.14", only: :dev},
+      {:apex, "~>0.7.0"},
+      {:httpoison, "~> 0.13.0"},
+      {:poison, "~> 2.0"},
+      {:oauth2, "~> 0.9"},
+    ]
   end
 end

@@ -8,12 +8,12 @@ defmodule Quickbooks do
     Quickbooks.Supervisor.start_link
   end
 
-  def oauth_consumer_key do
-    Application.get_env(:quickbooks, :oauth_consumer_key)
+  def client_id do
+    Application.get_env(:quickbooks, :client_id)
   end
 
-  def oauth_consumer_secret do
-    Application.get_env(:quickbooks, :oauth_consumer_secret)
+  def client_secret do
+    Application.get_env(:quickbooks, :client_secret)
   end
 
   def oauth_callback_url do
